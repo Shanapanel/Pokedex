@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Shanabot Market</title>
+    <script src="market_data.js"></script>
+    <style>
+        @font-face { font-family: 'Hemi Head'; src: url('hemi head bd it.ttf'); }
+        :root { --ana: #00f2ff; --altin: #ffd700; --bg: #06090f; --font: 'Hemi Head', sans-serif; }
+        * { font-family: var(--font) !important; box-sizing: border-box; }
+        body { background: var(--bg); color: #fff; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
+        .market-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; width: 100%; max-width: 1200px; }
+        .item-card { background: #11151c; border: 2px solid #2a3241; border-radius: 25px; padding: 35px; text-align: center; transition: 0.4s; }
+        .item-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0, 242, 255, 0.1); }
+        .item-card img { width: 180px; height: 180px; object-fit: contain; margin-bottom: 20px; }
+        .item-price { background: var(--altin); color: #000; padding: 10px 30px; border-radius: 50px; font-weight: bold; font-size: 22px; }
+        .cmd-box { margin-top: 30px; background: rgba(0, 255, 136, 0.05); padding: 12px; border-radius: 10px; color: #00ff88; border: 1px solid rgba(0, 255, 136, 0.2); }
+    </style>
+</head>
+<body>
+    <div style="text-align:center; margin-bottom:60px;">
+        <h1 style="font-size:60px; color:var(--altin); margin:0;">SHANABOT MARKET</h1>
+        <p style="color:var(--ana); letter-spacing:2px;">PUANLARINI HARCAMAK İÇİN CHATTE KOMUTUNU KULLAN</p>
+    </div>
+    <div id="reyon" class="market-grid"></div>
+
+    <script>
+        const reyon = document.getElementById('reyon');
+        marketUrunleri.forEach(u => {
+            reyon.innerHTML += `
+                <div class="item-card" style="border-color: ${u.renk}">
+                    <img src="${u.gif}">
+                    <span style="display:block; font-size:28px; color:${u.renk}; margin-bottom:15px;">${u.ad}</span>
+                    <p style="color:rgba(255,255,255,0.5); margin-bottom:25px; height:45px;">${u.desc}</p>
+                    <span class="item-price">${u.fiyat} 💰</span>
+                    <div class="cmd-box" style="color:${u.renk}; border-color:${u.renk}66">
+                        <small style="display:block; opacity:0.3; font-size:10px;">KOMUT:</small>${u.cmd}
+                    </div>
+                </div>`;
+        });
+    </script>
+</body>
+</html>
