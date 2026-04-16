@@ -52,7 +52,7 @@ const marketUrunleri = [
         fiyat: "35000",
         gif: "market/tiktok.gif",
         desc: "Tiktok videosu ekranda oynar.",
-        cmd: "!fal",
+        cmd: "!tiktok",
         renk: "#00f2ff"
     },
     {
@@ -60,7 +60,7 @@ const marketUrunleri = [
         fiyat: "2000",
         gif: "market/tenor.gif",
         desc: "attığınız tenor gifleri veya yazdığınız şey ekranda oynar. 30 Haziranda kapanacak",
-        cmd: "!fal",
+        cmd: "!gif",
         renk: "#ff4d4d"
     },
 
