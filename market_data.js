@@ -24,14 +24,6 @@ const marketUrunleri = [
         renk: "#00f2ff"
     },
     {
-        ad: "Fal",
-        fiyat: "500",
-        gif: "market/fal.gif",
-        desc: "Günlük falına baktır.",
-        cmd: "!fal",
-        renk: "#ff4d4d"
-    },
-    {
         ad: "Asma",
         fiyat: "150.000",
         gif: "market/asma.gif",
@@ -61,6 +53,14 @@ const marketUrunleri = [
         gif: "market/tenor.gif",
         desc: "attığınız tenor gifleri veya yazdığınız şey ekranda oynar. 30 Haziranda kapanacak",
         cmd: "!gif",
+        renk: "#ff4d4d"
+    },
+    {
+        ad: "Fal",
+        fiyat: "500",
+        gif: "market/fal.gif",
+        desc: "Günlük falına baktır.",
+        cmd: "!fal",
         renk: "#ff4d4d"
     },
 
