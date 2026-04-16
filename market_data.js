@@ -15,7 +15,7 @@ const marketUrunleri = [
         cmd: "!shorts",
         renk: "#ff4d4d"
     },
-     {
+    {
         ad: "Youtube Video",
         fiyat: "75.000",
         gif: "market/video.gif",
@@ -29,7 +29,7 @@ const marketUrunleri = [
         gif: "market/asma.gif",
         desc: "Chattten birini 5dk boyunca timeoutlar. Şeyh Sait gibi ekranda asılır.",
         cmd: "!asma",
-        renk: "#00f2ff"
+        renk: "#ff4d4d"
     },
     {
         ad: "Sula",
@@ -37,14 +37,6 @@ const marketUrunleri = [
         gif: "market/sula.gif",
         desc: "Yayıncıya Su içir.",
         cmd: "!sula",
-        renk: "#ff4d4d"
-    },
-    {
-        ad: "Tiktok",
-        fiyat: "35000",
-        gif: "market/tiktok.gif",
-        desc: "Tiktok videosu ekranda oynar.",
-        cmd: "!tiktok",
         renk: "#00f2ff"
     },
     {
@@ -55,6 +47,14 @@ const marketUrunleri = [
         cmd: "!gif",
         renk: "#ff4d4d"
     },
+    {
+        ad: "Tiktok",
+        fiyat: "35000",
+        gif: "market/tiktok.gif",
+        desc: "Tiktok videosu ekranda oynar.",
+        cmd: "!tiktok",
+        renk: "#00f2ff"
+    },  
     {
         ad: "Fal",
         fiyat: "500",
