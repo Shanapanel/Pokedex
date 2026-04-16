@@ -41,7 +41,7 @@ const marketUrunleri = [
     },
     {
         ad: "Sula",
-        fiyat: "500",
+        fiyat: "7.500",
         gif: "market/sula.gif",
         desc: "Yayıncıya Su içir.",
         cmd: "!sula",
