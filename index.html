@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shanabot | Anasayfa</title>
+    <title>Shanapanel | Ana Kontrol Merkezi</title>
     <style>
-        /* Fontu Yerel Dosyadan Tanımlıyoruz */
         @font-face {
             font-family: 'Hemi Head';
             src: url('hemi head bd it.ttf') format('truetype');
@@ -17,6 +16,7 @@
             --neon-cyan: #00f2ff; 
             --neon-pink: #e91e63; 
             --neon-gold: #ffd700; 
+            --neon-purple: #bc13fe;
             --bg-dark: #05070a;
             --main-font: 'Hemi Head', sans-serif; 
         }
@@ -31,13 +31,14 @@
             flex-direction: column;
             align-items: center; 
             justify-content: center;
-            height: 100vh; 
-            overflow: hidden;
+            min-height: 100vh; 
+            overflow-x: hidden;
         }
 
         .hub-container {
             text-align: center;
             z-index: 2;
+            padding: 40px 0;
         }
 
         h1 {
@@ -51,8 +52,10 @@
 
         .menu-grid {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
         }
 
         .nav-card {
@@ -71,18 +74,25 @@
             overflow: hidden;
         }
 
-        /* Kart Renkleri ve Hover Efektleri */
+        /* Hover Efektleri */
+        .nav-card:hover { transform: translateY(-10px); }
+
         .card-pokedex { border-color: rgba(0, 242, 255, 0.2); }
-        .card-pokedex:hover { border-color: var(--neon-cyan); box-shadow: 0 0 40px rgba(0, 242, 255, 0.2); transform: translateY(-10px); }
+        .card-pokedex:hover { border-color: var(--neon-cyan); box-shadow: 0 0 40px rgba(0, 242, 255, 0.2); }
         .card-pokedex .title { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0, 242, 255, 0.5); }
 
         .card-market { border-color: rgba(255, 215, 0, 0.2); }
-        .card-market:hover { border-color: var(--neon-gold); box-shadow: 0 0 40px rgba(255, 215, 0, 0.2); transform: translateY(-10px); }
+        .card-market:hover { border-color: var(--neon-gold); box-shadow: 0 0 40px rgba(255, 215, 0, 0.2); }
         .card-market .title { color: var(--neon-gold); text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
 
         .card-basarim { border-color: rgba(233, 30, 99, 0.2); }
-        .card-basarim:hover { border-color: var(--neon-pink); box-shadow: 0 0 40px rgba(233, 30, 99, 0.2); transform: translateY(-10px); }
+        .card-basarim:hover { border-color: var(--neon-pink); box-shadow: 0 0 40px rgba(233, 30, 99, 0.2); }
         .card-basarim .title { color: var(--neon-pink); text-shadow: 0 0 10px rgba(233, 30, 99, 0.5); }
+
+        /* Yeni FAQ Kartı Stili */
+        .card-faq { border-color: rgba(188, 19, 254, 0.2); }
+        .card-faq:hover { border-color: var(--neon-purple); box-shadow: 0 0 40px rgba(188, 19, 254, 0.2); }
+        .card-faq .title { color: var(--neon-purple); text-shadow: 0 0 10px rgba(188, 19, 254, 0.5); }
 
         .icon {
             font-size: 80px;
@@ -91,10 +101,12 @@
         }
 
         .title {
-            font-size: 28px;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+            font-size: 26px;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
             font-style: italic;
+            text-align: center;
+            padding: 0 10px;
         }
 
         .desc {
@@ -106,11 +118,9 @@
             line-height: 1.5;
         }
 
-        /* Arka Plan Scanline Efekti */
         .bg-glow {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
             background-size: 100% 2px, 3px 100%;
             pointer-events: none;
@@ -118,8 +128,8 @@
         }
 
         .footer {
-            position: absolute;
-            bottom: 30px;
+            position: relative;
+            padding: 30px;
             font-size: 11px;
             letter-spacing: 4px;
             color: #222;
@@ -132,7 +142,7 @@
     <div class="bg-glow"></div>
 
     <div class="hub-container">
-        <h1>SHANABOT</h1>
+        <h1>SHANAPANEL</h1>
         
         <div class="menu-grid">
             <a href="https://shanapanel.github.io/Shanabot/pokedex.html" target="_blank" class="nav-card card-pokedex">
@@ -151,6 +161,12 @@
                 <div class="icon">🏆</div>
                 <div class="title">BAŞARIMLAR</div>
                 <div class="desc">Kullanıcı rütbeleri, kariyer kayıtları ve kilitli madalyalar.</div>
+            </a>
+
+            <a href="https://shanapanel.github.io/Shanabot/faq.html" target="_blank" class="nav-card card-faq">
+                <div class="icon">🏛️</div>
+                <div class="title">ÇOKÇA SORULANLAR</div>
+                <div class="desc">Sistem protokolleri, puan kazanma yöntemleri ve vahşi av kuralları rehberi.</div>
             </a>
         </div>
     </div>
