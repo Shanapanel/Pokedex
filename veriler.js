@@ -1,3 +1,21 @@
 ﻿var achievementData = { "users": [
-  { "userName": "Shanapanel", "achievements": "siftah,caylak,mudavim", "totalMessages": 500, "totalSent": 0, "totalClaims": 0 }
+  { "userName": "Shanapanel", "achievements": "siftah,caylak,mudavim,komut_kolesi,destanci", "totalMessages": 521, "totalSent": 0, "totalClaims": 0 },
+  { "userName": "shanabot", "achievements": "siftah,caylak,destanci,komut_kolesi,merakli", "totalMessages": 420, "totalSent": 0, "totalClaims": 0 },
+  { "userName": "selimhk", "achievements": "siftah,komut_kolesi,esnaf,ilk_maas,son_dakikaci,caps_canavari,kahkaha_makinesi,caylak,merakli,destanci,saygi_durusu,filozof", "totalMessages": 300, "totalSent": 0, "totalClaims": 0 },
+  { "userName": "jolse", "achievements": "siftah,caps_canavari,kahkaha_makinesi,komut_kolesi,ilk_maas,son_dakikaci,caylak,saygi_durusu,filozof", "totalMessages": 121, "totalSent": 0, "totalClaims": 0 },
+  { "userName": "TheQueenPolatsuuu", "achievements": "siftah,komut_kolesi,ilk_maas,son_dakikaci,caps_canavari,caylak", "totalMessages": 110, "totalSent": 0, "totalClaims": 0 },
+  { "userName": "Njord11", "achievements": "siftah,komut_kolesi,ilk_maas,son_dakikaci,destanci,saygi_durusu,filozof", "totalMessages": 38, "totalSent": 0, "totalClaims": 0 },
+  { "userName": "zizikoocm", "achievements": "siftah,caps_canavari,komut_kolesi,ilk_maas,son_dakikaci,caylak", "totalMessages": 85, "totalSent": 0, "totalClaims": 0 },
+  { "userName": "hopecn", "achievements": "siftah,esnaf,komut_kolesi,ilk_maas,son_dakikaci,kahkaha_makinesi,caps_canavari,filozof,caylak,saygi_durusu", "totalMessages": 167, "totalSent": 0, "totalClaims": 0 },
+  { "userName": "blacktigin", "achievements": "siftah,esnaf,komut_kolesi,ilk_maas,son_dakikaci,kahkaha_makinesi", "totalMessages": 44, "totalSent": 0, "totalClaims": 0 },
+  { "userName": "sosyofobix", "achievements": "siftah,komut_kolesi,ilk_maas,son_dakikaci", "totalMessages": 1, "totalSent": 0, "totalClaims": 0 },
+  { "userName": "UCharger", "achievements": "siftah,komut_kolesi,ilk_maas,son_dakikaci,caylak", "totalMessages": 185, "totalSent": 0, "totalClaims": 0 },
+  { "userName": "cicekkim", "achievements": "siftah,esnaf,komut_kolesi,ilk_maas,son_dakikaci", "totalMessages": 8, "totalSent": 0, "totalClaims": 0 },
+  { "userName": "Wias33", "achievements": "siftah,esnaf,komut_kolesi,ilk_maas,son_dakikaci,caps_canavari,saygi_durusu,filozof,caylak,merakli", "totalMessages": 114, "totalSent": 0, "totalClaims": 0 },
+  { "userName": "berk_9", "achievements": "siftah,esnaf", "totalMessages": 3, "totalSent": 0, "totalClaims": 0 },
+  { "userName": "girmizi2borg", "achievements": "siftah,komut_kolesi", "totalMessages": 21, "totalSent": 0, "totalClaims": 0 },
+  { "userName": "DomDomWayne", "achievements": "siftah,komut_kolesi", "totalMessages": 2, "totalSent": 0, "totalClaims": 0 },
+  { "userName": "metebcrr", "achievements": "siftah,komut_kolesi,ilk_maas,son_dakikaci,caps_canavari", "totalMessages": 49, "totalSent": 0, "totalClaims": 0 },
+  { "userName": "akaAPOSIKMEBAGIMLISI", "achievements": "siftah,komut_kolesi,ilk_maas,son_dakikaci", "totalMessages": 9, "totalSent": 0, "totalClaims": 0 },
+  { "userName": "Tamircci", "achievements": "siftah,esnaf,komut_kolesi,ilk_maas,son_dakikaci", "totalMessages": 22, "totalSent": 0, "totalClaims": 0 }
 ] };
