@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shanapanel | Ana Kontrol Merkezi</title>
+    <style>
+        /* Fontu Yerel Dosyadan Tanımlıyoruz */
+        @font-face {
+            font-family: 'Hemi Head';
+            src: url('hemi head bd it.ttf') format('truetype');
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        :root { 
+            --neon-cyan: #00f2ff; 
+            --neon-pink: #e91e63; 
+            --neon-gold: #ffd700; 
+            --bg-dark: #05070a;
+            --main-font: 'Hemi Head', sans-serif; 
+        }
+
+        body { 
+            background-color: var(--bg-dark); 
+            background-image: radial-gradient(circle at center, #0d121d 0%, #05070a 100%);
+            color: #fff; 
+            font-family: var(--main-font); 
+            margin: 0; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center;
+            height: 100vh; 
+            overflow: hidden;
+        }
+
+        .hub-container {
+            text-align: center;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 70px;
+            text-shadow: 0 0 20px var(--neon-cyan);
+            letter-spacing: 4px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            font-style: italic;
+        }
+
+        .menu-grid {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .nav-card {
+            width: 250px;
+            height: 350px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Kart Renkleri ve Hover Efektleri */
+        .card-pokedex { border-color: rgba(0, 242, 255, 0.2); }
+        .card-pokedex:hover { border-color: var(--neon-cyan); box-shadow: 0 0 40px rgba(0, 242, 255, 0.2); transform: translateY(-10px); }
+        .card-pokedex .title { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0, 242, 255, 0.5); }
+
+        .card-market { border-color: rgba(255, 215, 0, 0.2); }
+        .card-market:hover { border-color: var(--neon-gold); box-shadow: 0 0 40px rgba(255, 215, 0, 0.2); transform: translateY(-10px); }
+        .card-market .title { color: var(--neon-gold); text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+
+        .card-basarim { border-color: rgba(233, 30, 99, 0.2); }
+        .card-basarim:hover { border-color: var(--neon-pink); box-shadow: 0 0 40px rgba(233, 30, 99, 0.2); transform: translateY(-10px); }
+        .card-basarim .title { color: var(--neon-pink); text-shadow: 0 0 10px rgba(233, 30, 99, 0.5); }
+
+        .icon {
+            font-size: 80px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
+        }
+
+        .title {
+            font-size: 28px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .desc {
+            font-size: 13px;
+            font-family: 'Segoe UI', sans-serif;
+            font-style: normal;
+            color: #666;
+            padding: 0 25px;
+            line-height: 1.5;
+        }
+
+        /* Arka Plan Scanline Efekti */
+        .bg-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 30px;
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: #222;
+            text-transform: uppercase;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+
+    <div class="hub-container">
+        <h1>SHANAPANEL</h1>
+        
+        <div class="menu-grid">
+            <a href="https://shanapanel.github.io/Shanabot/pokedex.html" target="_blank" class="nav-card card-pokedex">
+                <div class="icon">🔴</div>
+                <div class="title">POKÉDEX</div>
+                <div class="desc">Eğitmenlerin güncel koleksiyon verileri ve aktif savaş takımları.</div>
+            </a>
+
+            <a href="https://shanapanel.github.io/Shanabot/market.html" target="_blank" class="nav-card card-market">
+                <div class="icon">🏦</div>
+                <div class="title">MARKET</div>
+                <div class="desc">Sistem içi varlıklarla ticaret ve özel yetki alım terminali.</div>
+            </a>
+
+            <a href="https://shanapanel.github.io/Shanabot/başarım.html" target="_blank" class="nav-card card-basarim">
+                <div class="icon">🏆</div>
+                <div class="title">BAŞARIMLAR</div>
+                <div class="desc">Kullanıcı rütbeleri, kariyer kayıtları ve kilitli madalyalar.</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer">SHANAPANEL DATA CORE // SECURE CONNECTION ESTABLISHED</div>
+</body>
+</html>
