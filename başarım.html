@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Shanapanel Veri Sistemi</title>
+    <script id="dataScript" src="veriler.js"></script>
+    <style>
+        :root { 
+            --neon-cyan: #00f2ff; 
+            --neon-gold: #ffd700; 
+            --neon-green: #00ff88; 
+            --bg-dark: #06090f; 
+            --card-bg: #11151c; 
+            --main-font: 'Hemi Head', 'Segoe UI', sans-serif; 
+        }
+
+        body { 
+            background-color: var(--bg-dark); 
+            color: #fff; 
+            font-family: var(--main-font); 
+            margin: 0; 
+            display: flex; 
+            height: 100vh; 
+            overflow: hidden; 
+        }
+        
+        /* Sol Menü - Pokedex Stili */
+        #sidebar { width: 300px; background: #0a0d14; border-right: 2px solid var(--neon-cyan); padding: 25px; overflow-y: auto; }
+        .user-btn { padding: 15px; margin-bottom: 12px; background: var(--card-bg); border-radius: 10px; cursor: pointer; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .user-btn.active { border-color: var(--neon-cyan); background: #161b25; box-shadow: 0 0 15px rgba(0, 242, 255, 0.2); }
+        .user-btn h3 { margin: 0; font-size: 18px; color: var(--neon-cyan); letter-spacing: 1px; }
+        
+        /* Sağ Ekran - Pokedex Stili */
+        #main-view { flex: 1; padding: 30px; overflow-y: auto; background: radial-gradient(circle at top right, #0d121d, #06090f); }
+        .header-box { background: rgba(255,255,255,0.02); padding: 25px; border-radius: 12px; border: 1px solid rgba(0, 242, 255, 0.2); margin-bottom: 20px; }
+        .profile-title { font-size: 42px; text-shadow: 0 0 15px var(--neon-cyan); letter-spacing: 3px; margin: 0; color: #fff; }
+
+        /* BAŞARIM LİSTESİ */
+        .badge-list { display: flex; flex-direction: column; gap: 10px; }
+        .badge-row { 
+            display: flex; 
+            align-items: center; 
+            background: #0d1117; 
+            border-radius: 8px; 
+            padding: 15px 25px; 
+            border: 1px solid rgba(255,255,255,0.03); 
+            transition: 0.4s; 
+            filter: grayscale(1); 
+            opacity: 0.15; 
+        }
+        
+        /* Kazanılan Başarım Parlaması - Cyan Mode */
+        .badge-row.owned { 
+            filter: grayscale(0); 
+            opacity: 1; 
+            border-color: var(--neon-cyan); 
+            background: linear-gradient(90deg, rgba(0, 242, 255, 0.08) 0%, rgba(13, 17, 23, 1) 100%);
+            box-shadow: -5px 0 15px rgba(0, 242, 255, 0.1);
+        }
+
+        .badge-icon { font-size: 32px; width: 60px; text-align: center; margin-right: 20px; filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.5)); }
+        .badge-info { flex: 1; }
+        .badge-name { display: block; font-size: 16px; color: var(--neon-cyan); letter-spacing: 2px; font-weight: bold; margin-bottom: 3px; }
+        .badge-desc { display: block; font-size: 12px; color: #555; font-family: 'Segoe UI'; letter-spacing: 0.5px; }
+        .owned .badge-desc { color: #aaa; }
+        
+        .status-tag { font-size: 10px; padding: 4px 10px; border-radius: 4px; background: #222; color: #444; letter-spacing: 1px; font-weight: bold; }
+        .owned .status-tag { background: var(--neon-cyan); color: #000; box-shadow: 0 0 10px var(--neon-cyan); }
+        .owned .badge-name { color: var(--neon-gold); text-shadow: 0 0 5px rgba(255, 215, 0, 0.3); }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: var(--neon-cyan); }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <h2 style="color: var(--neon-cyan); text-align: center; letter-spacing: 2px; margin-bottom: 30px;">SİSTEM ÜYELERİ</h2>
+        <div id="userList"></div>
+    </div>
+    
+    <div id="main-view">
+        <div id="welcome" style="text-align: center; margin-top: 150px; opacity: 0.2;">
+            <h1 style="letter-spacing: 3px; color: var(--neon-cyan);">ERİŞİM İÇİN PROFİL SEÇİN</h1>
+        </div>
+
+        <div id="details" style="display: none;">
+            <div class="header-box">
+                <div id="d-name" class="profile-title">---</div>
+                <div id="sync-time" style="color: var(--neon-cyan); font-size: 11px; margin-top: 5px; opacity: 0.6; letter-spacing: 1px;"></div>
+            </div>
+
+            <h3 style="color: var(--neon-gold); font-size: 14px; margin-bottom: 20px; letter-spacing: 4px; text-transform: uppercase;">Arşivlenmiş Başarımlar ve Veri Kayıtları</h3>
+            <div id="badgeList" class="badge-list"></div>
+        </div>
+    </div>
+
+    <script>
+        let selectedUserIndex = -1;
+
+        const allAchievements = [
+            { id: "siftah", icon: "💎", name: "İLK TEMAS", desc: "Sistem veri akışındaki varlığını kanıtladın ve ilk mesajını başarıyla gönderdin." },
+            { id: "caylak", icon: "🔰", name: "ÇAYLAK SEVİYESİ", desc: "Sohbet frekansında 50 mesaj barajını aşarak sistemdeki yerini sağlamlaştırdın." },
+            { id: "mudavim", icon: "⭐", name: "SADIK ÜYE", desc: "500 mesajlık etkileşimle beraber bu topluluğun vazgeçilmez bir parçası haline geldin." },
+            { id: "klavye_sovalyesi", icon: "⚔️", name: "KLAVYE ŞÖVALYESİ", desc: "5000 mesaj sınırını devirerek parmaklarının hızını ve sadakatini sisteme kanıtladın." },
+            { id: "efsanevi_hatip", icon: "📜", name: "EFSANEVİ HATİP", desc: "10.000 mesajlık devasa bir arşive ulaştın, kelimelerin artık bu evrende birer efsane." },
+            { id: "gece_kusu", icon: "🦉", name: "GECE OPERASYONU", desc: "Gece saat 02:00 ile 06:00 arasında aktif kalarak karanlığın hakimi olduğunu gösterdin." },
+            { id: "erkenci_kus", icon: "🌅", name: "ŞAFAK VAKTİ", desc: "Sabah 06:00 ile 10:00 saatleri arasında sisteme giriş yaparak güne herkesten önce başladın." },
+            { id: "destanci", icon: "✍️", name: "DESTAN YAZARI", desc: "Tek bir mesajda 150 karakterden fazla kullanarak uzun soluklu bir anlatım gerçekleştirdin." },
+            { id: "caps_canavari", icon: "📢", name: "SES YÜKSELTİCİ", desc: "Mesajlarının tamamını büyük harflerle yazarak sistemdeki sesini en yüksek perdeden duyurdun." },
+            { id: "kahkaha_makinesi", icon: "😂", name: "NEŞE KAYNAĞI", desc: "Sohbet akışında kullandığın ifadelerle sistemdeki pozitif enerji seviyesini zirveye taşıdın." },
+            { id: "esnaf", icon: "🤝", name: "SİSTEMİN GÜLEN YÜZÜ", desc: "Giriş yaptığın her an nezaketini göstererek selamını eksik etmedin, saygınlığını artırdın." },
+            { id: "saygi_durusu", icon: "🫡", name: "SON GÖREV", desc: "Kritik anlarda sadece 'F' tuşunu kullanarak toplumsal saygı ritüeline katılım sağladın." },
+            { id: "filozof", icon: "🧘", name: "DERİN DÜŞÜNÜR", desc: "Mesajlarında üç nokta (...) kullanarak kelimelerin ötesindeki derin anlamları sistemle paylaştın." },
+            { id: "ilk_transfer", icon: "💸", name: "FİNANSAL BAŞLANGIÇ", desc: "Ekonomi protokollerini kullanarak başka bir kullanıcıya ilk başarılı varlık transferini gerçekleştirdin." },
+            { id: "comert", icon: "💰", name: "CÖMERT HAYIRSEVER", desc: "Sistem içerisindeki diğer üyelere toplamda 50.000 birim dağıtarak büyük bir iyilik yaptın." },
+            { id: "robin_hood", icon: "🏹", name: "VARLIK DAĞITICI", desc: "Toplamda 500.000 birim paylaşarak zenginliğini toplulukla paylaştın, adaleti sağladın." },
+            { id: "para_babasi", icon: "🎩", name: "EKONOMİ DEVİ", desc: "2 Milyon birimlik devasa bir varlığı başkalarına transfer ederek sistemin en büyük patronu oldun." },
+            { id: "agir_abi", icon: "🦍", name: "BALYOZ ETKİSİ", desc: "Tek bir işlemle 100.000 birim gibi devasa bir meblağı transfer ederek gücünü ilan ettin." },
+            { id: "ilk_maas", icon: "💼", name: "İLK ÖDEME", desc: "Sistemdeki günlük yerini alarak hak ettiğin ilk ödeme kaydını başarıyla cüzdanına işledin." },
+            { id: "duzenli_calisan", icon: "📅", name: "İSTİKRARLI PERSONEL", desc: "Arka arkaya 3 gün boyunca sistemden maaşını çekerek düzenli bir çalışma disiplini sergiledin." },
+            { id: "maasli_eleman", icon: "🏢", name: "SÖZLEŞMELİ ÜYE", desc: "7 gün boyunca hiç ara vermeden günlük ödemelerini aldın ve tam bir haftalık seri yakaladın." },
+            { id: "iskolik", icon: "☕", name: "MESAİ TUTKUNU", desc: "Toplamda 30 kez günlük maaş komutunu kullanarak sistemdeki en çalışkan isimlerden biri oldun." },
+            { id: "demirbas", icon: "🗽", name: "SİSTEM DEMİRBAŞI", desc: "Tam 365 gün boyunca buradaydın! Artık bu sistemin ayrılmaz, sarsılmaz bir parçasısın." },
+            { id: "gece_bekcisi", icon: "🔦", name: "VARDIYA AMİRİ", desc: "Maaşını gece 00:00 ile 02:00 arasındaki o dar zaman diliminde çekerek nöbetini tuttun." },
+            { id: "son_dakikaci", icon: "⏱️", name: "ZAMAN YARIŞÇISI", desc: "Günlük hakkının dolmasına dakikalar kala, son saniyede maaşını kurtarmayı başardın." },
+            { id: "belediye_yardimi", icon: "🏛️", name: "TEMEL DESTEK", desc: "Gişe sistemini kullanarak sağlanan temel maaş ödemesini ilk kez başarıyla teslim aldın." },
+            { id: "stajyer", icon: "🎒", name: "GİŞE STAJYERI", desc: "Gişe işlemlerini 10 kez başarıyla tamamlayarak bürokrasideki ilk adımlarını attın." },
+            { id: "memur", icon: "👔", name: "KADROLU PERSONEL", desc: "50 kez gişe ziyareti gerçekleştirerek sistemdeki yerini resmi memur statüsüne yükselttin." },
+            { id: "sube_muduru", icon: "💼", name: "YÖNETİCİ MAKAMI", desc: "100 kez gişeye uğrayarak operasyonel süreçlerdeki hakimiyetini ve sabrını kanıtladın." },
+            { id: "emekli", icon: "👴", name: "KIDEMLİ EMEKLİ", desc: "200 kez gişe işlemiyle hizmet süreni doldurdun ve sistemin saygın emeklileri arasına girdin." },
+            { id: "bakan", icon: "👑", name: "ÜST DÜZEY YETKİLİ", desc: "500 kez gişeye uğrayarak ulaşılabilecek en yüksek bürokratik mertebelerden birine eriştin." },
+            { id: "vip_musteri", icon: "✨", name: "AYRICALIKLI ÜYE", desc: "Abone avantajlarını kullanarak maaşını devasa bir çarpanla katladın ve farkını koydun." },
+            { id: "kacakci", icon: "🥷", name: "GÖLGE OPERASYONU", desc: "Kısıtlı listede olmana rağmen protokollerin arasından sızarak ödemeni almayı başardın." },
+            { id: "sabah_ezani", icon: "🕌", name: "ERKEN MESAİ", desc: "Sabah 05:00 ile 07:00 arasında gişeye giderek mesaiye herkesten önce başladın." },
+            { id: "ogle_paydosu", icon: "🍲", name: "MOLA ZAMANI", desc: "Öğle yemeği saatlerinde (12:00-13:00) gişe işlemini yaparak vaktini verimli kullandın." },
+            { id: "mesai_disi", icon: "🌇", name: "MESAİ SONRASI", desc: "Günlük işlerini bitirip akşam saatlerinde gişeye uğrayarak ek gelirini tahsil ettin." },
+            { id: "vardiya_iscisi", icon: "⚒️", name: "GECE VARDİYASI", desc: "Gecenin en derin saatlerinde (03:00-05:00) gişe işlemiyle nöbetçi olduğunu gösterdin." }
+        ];
+
+        function refreshData() {
+            const oldScript = document.getElementById('dataScript');
+            if (oldScript) oldScript.remove();
+            const newScript = document.createElement('script');
+            newScript.id = 'dataScript';
+            newScript.src = 'veriler.js?t=' + Date.now();
+            newScript.onload = () => {
+                loadUsers();
+                if (selectedUserIndex !== -1) showUser(selectedUserIndex);
+            };
+            document.head.appendChild(newScript);
+        }
+
+        function loadUsers() {
+            if (typeof achievementData === 'undefined') return;
+            const list = document.getElementById('userList');
+            list.innerHTML = '';
+            achievementData.users.forEach((u, index) => {
+                const div = document.createElement('div');
+                div.className = 'user-btn' + (selectedUserIndex === index ? ' active' : '');
+                div.onclick = () => { selectedUserIndex = index; showUser(index); };
+                div.innerHTML = `<h3>${u.userName}</h3>`;
+                list.appendChild(div);
+            });
+            document.getElementById('sync-time').innerText = "SYSTEM SYNC: " + achievementData.lastSync;
+        }
+
+        function showUser(index) {
+            const u = achievementData.users[index];
+            if(!u) return;
+            document.getElementById('welcome').style.display = 'none';
+            document.getElementById('details').style.display = 'block';
+            document.getElementById('d-name').innerText = u.userName;
+            
+            const bListArea = document.getElementById('badgeList');
+            bListArea.innerHTML = '';
+            
+            const userAchs = u.achievements.split(',').map(x => x.trim().toLowerCase());
+
+            allAchievements.forEach(ach => {
+                const isOwned = userAchs.includes(ach.id.toLowerCase());
+                const bRow = document.createElement('div');
+                bRow.className = `badge-row ${isOwned ? 'owned' : ''}`;
+                
+                bRow.innerHTML = `
+                    <div class="badge-icon">${ach.icon}</div>
+                    <div class="badge-info">
+                        <span class="badge-name">${ach.name}</span>
+                        <span class="badge-desc">${ach.desc}</span>
+                    </div>
+                    <div class="status-tag">${isOwned ? 'ACTIVE' : 'LOCKED'}</div>
+                `;
+                bListArea.appendChild(bRow);
+            });
+        }
+
+        setTimeout(refreshData, 100);
+        setInterval(refreshData, 10000);
+    </script>
+</body>
+</html>
