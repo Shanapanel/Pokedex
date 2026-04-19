@@ -142,6 +142,25 @@
         .border-pink { border-left-color: var(--neon-pink); }
         .border-purple { border-left-color: var(--neon-purple); }
 
+        .event-link-btn {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--neon-purple);
+            text-decoration: none;
+            border: 1px solid var(--neon-purple);
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: 0.3s;
+            font-style: italic;
+            font-weight: bold;
+        }
+        .event-link-btn:hover {
+            background: var(--neon-purple);
+            color: #fff;
+            box-shadow: 0 0 20px var(--neon-purple);
+        }
+
         .gen-gallery { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
         .gen-card {
             width: 200px;
@@ -153,7 +172,7 @@
         }
         .gen-card:hover { border-color: var(--neon-green); transform: scale(1.05); }
         .gen-card img { width: 100%; display: block; }
-        .gen-card span { display: block; text-align: center; padding: 8px; background: #111; font-size: 14px; color: var(--neon-green); }
+        .gen-card span { display: block; text-align: center; padding: 10px; background: #111; font-size: 14px; color: var(--neon-green); font-weight: bold; letter-spacing: 2px; }
 
         .modal {
             display: none;
@@ -205,12 +224,12 @@
             </div>
 
             <div class="terminal-box border-gold">
-    <span class="box-title">✨ ABONELİK ÖDÜLÜ (SUB BONUS)</span>
-    <p class="box-text">
-        <span class="gold-text">KENDİNE ABONELİK:</span> Abone olduğunuzda veya yenilediğinizde anında <span class="sub-text">15.000 COIN</span> kazanırsınız. <br>
-        <span class="gold-text">HEDİYE GÖNDERİMİ:</span> Başka bir kullanıcıya abonelik hediye ettiğinizde, hediye ettiğiniz her bir abonelik için <span class="sub-text">15.000 COIN</span> doğrudan SİZİN hesabınıza tanımlanır.
-    </p>
-</div>
+                <span class="box-title">✨ ABONELİK ÖDÜLÜ (SUB BONUS)</span>
+                <p class="box-text">
+                    <span class="gold-text">KENDİNE ABONELİK:</span> Abone olduğunuzda veya yenilediğinizde anında <span class="sub-text">15.000 COIN</span> kazanırsınız. <br>
+                    <span class="gold-text">HEDİYE GÖNDERİMİ:</span> Başka bir kullanıcıya abonelik hediye ettiğinizde, her bir abonelik için <span class="sub-text">15.000 COIN</span> doğrudan SİZİN hesabınıza tanımlanır.
+                </p>
+            </div>
 
             <div class="terminal-box border-gold">
                 <span class="box-title">🏦 GİŞE MAAŞI (!MAAŞ)</span>
@@ -253,10 +272,8 @@
             <div class="terminal-box border-purple">
                 <span class="box-title">💜 PUAN ETKİNLİKLERİ (EVENT)</span>
                 <p class="box-text">
-                    <span class="important">DURUM: YAKINDA GELECEK</span>
-                    <span class="purple-text">1. HARF ÇORBASI:</span> Karışık harflerden doğru kelimeyi ilk bulan kazanır. <br>
-                    <span class="purple-text">2. QUIZ:</span> Film, dizi ve anime dünyasından gelen soruları doğru yanıtlayan ödülü kapar. <br>
-                    <span class="purple-text">3. SHANA SORULARI:</span> Yayıncının anlık olarak sorduğu genel kültür veya yayına özel sorulardır.
+                    Sohbet üzerinden katılabileceğiniz aktif etkinliklerin ve gelecek etkinliklerin tüm detayları için etkinlikler sayfasını ziyaret edin. <br><br>
+                    <a href="https://shanapanel.github.io/Shanabot/eventler.html" class="event-link-btn">➡️ ETKİNLİK DETAYLARI VE BİLGİ AL</a>
                 </p>
             </div>
         </div>
@@ -285,22 +302,27 @@
                 <span class="box-title">⚔️ TAKIM YÖNETİMİ VE SLOTLAR</span>
                 <p class="box-text">
                     <span class="gold-text">SLOT ATAMA:</span> !slot[1-6] [Pokemon No] (Örn: !slot1 1) <br>
-                    <i>* Slot doluysa mevcut Pokémonun üzerine yazılır.</i> <br><br>
                     <span class="gold-text">!pokeparty :</span> Aktif 6'lı takımınızı yayın ekranına yansıtır.
                 </p>
             </div>
 
             <div class="terminal-box border-cyan">
-                <span class="box-title">📸 NESİL LİSTELERİ</span>
+                <span class="box-title">📖 POKÉDEX</span>
+                <p class="box-text">
+                    Koleksiyonunuzdaki Pokémonları nesillere göre listelemek ve tüm listeyi incelemek için aşağıdaki komutları kullanın: <br><br>
+                    <span class="val-text">!pokedex1 :</span> Nesil 1 Pokémonlarınızı listeler. <br>
+                    <span class="val-text">!pokedex2 :</span> Nesil 2 Pokémonlarınızı listeler. <br>
+                    <span class="val-text">!pokedex3 :</span> Nesil 3 Pokémonlarınızı listeler.
+                </p>
                 <div class="gen-gallery">
                     <div class="gen-card" onclick="zoomImg('gen1.jpg')">
-                        <img src="gen1.jpg"><span>NESİL 1</span>
+                        <img src="gen1.jpg"><span>POKÉDEX1</span>
                     </div>
                     <div class="gen-card" onclick="zoomImg('gen2.jpg')">
-                        <img src="gen2.jpg"><span>NESİL 2</span>
+                        <img src="gen2.jpg"><span>POKÉDEX2</span>
                     </div>
                     <div class="gen-card" onclick="zoomImg('gen3.jpg')">
-                        <img src="gen3.jpg"><span>NESİL 3</span>
+                        <img src="gen3.jpg"><span>POKÉDEX3</span>
                     </div>
                 </div>
             </div>
@@ -310,9 +332,8 @@
             <div class="terminal-box border-cyan">
                 <span class="box-title">🎖️ BAŞARIM VE SİSTEM BİLGİSİ</span>
                 <p class="box-text">
-                    Sistemdeki tüm ilerlemeleriniz (Sadakat, Kıdem, Etkileşim ve Cömertlik madalyaları) belirli aralıklarla işlenmektedir. <br><br>
-                    <span class="important">GÜNCELLEME NOTU:</span> Başarımlar ve rütbe ilerlemeleri <span class="val-text">yayın sonu / gün sonu</span> veriler işlendiğinde panelinize yansımaktadır. <br><br>
-                    <span class="gold-text">GELECEK GÜNCELLEMELER:</span> Çok yakında yeni başarım kategorileri ve özel rozetler sisteme dahil edilecektir. Takipte kalın!
+                    Sistemdeki tüm ilerlemeleriniz belirli aralıklarla işlenmektedir. <br><br>
+                    <span class="important">GÜNCELLEME NOTU:</span> Başarımlar ve rütbe ilerlemeleri <span class="val-text">yayın sonu / gün sonu</span> veriler işlendiğinde panelinize yansımaktadır.
                 </p>
             </div>
         </div>

@@ -17,6 +17,7 @@
             --neon-pink: #e91e63; 
             --neon-gold: #ffd700; 
             --neon-purple: #bc13fe;
+            --neon-green: #00ff88;
             --bg-dark: #05070a;
             --main-font: 'Hemi Head', sans-serif; 
         }
@@ -55,11 +56,11 @@
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
-            max-width: 1200px;
+            max-width: 1400px;
         }
 
         .nav-card {
-            width: 250px;
+            width: 240px;
             height: 350px;
             background: rgba(255, 255, 255, 0.02);
             border: 2px solid rgba(255, 255, 255, 0.05);
@@ -74,7 +75,6 @@
             overflow: hidden;
         }
 
-        /* Hover Efektleri */
         .nav-card:hover { transform: translateY(-10px); }
 
         .card-pokedex { border-color: rgba(0, 242, 255, 0.2); }
@@ -89,7 +89,11 @@
         .card-basarim:hover { border-color: var(--neon-pink); box-shadow: 0 0 40px rgba(233, 30, 99, 0.2); }
         .card-basarim .title { color: var(--neon-pink); text-shadow: 0 0 10px rgba(233, 30, 99, 0.5); }
 
-        /* Yeni FAQ Kartı Stili */
+        /* Etkinlikler Kartı - Neon Green */
+        .card-event { border-color: rgba(0, 255, 136, 0.2); }
+        .card-event:hover { border-color: var(--neon-green); box-shadow: 0 0 40px rgba(0, 255, 136, 0.2); }
+        .card-event .title { color: var(--neon-green); text-shadow: 0 0 10px rgba(0, 255, 136, 0.5); }
+
         .card-faq { border-color: rgba(188, 19, 254, 0.2); }
         .card-faq:hover { border-color: var(--neon-purple); box-shadow: 0 0 40px rgba(188, 19, 254, 0.2); }
         .card-faq .title { color: var(--neon-purple); text-shadow: 0 0 10px rgba(188, 19, 254, 0.5); }
@@ -161,6 +165,12 @@
                 <div class="icon">🏆</div>
                 <div class="title">BAŞARIMLAR</div>
                 <div class="desc">Kullanıcı rütbeleri, kariyer kayıtları ve kilitli madalyalar.</div>
+            </a>
+
+            <a href="https://shanapanel.github.io/Shanabot/eventler.html" target="_blank" class="nav-card card-event">
+                <div class="icon">🎯</div>
+                <div class="title">ETKİNLİKLER</div>
+                <div class="desc">Harf Çorbası ve canlı yayın oyun protokolleri hakkında teknik rehber.</div>
             </a>
 
             <a href="https://shanapanel.github.io/Shanabot/faq.html" target="_blank" class="nav-card card-faq">

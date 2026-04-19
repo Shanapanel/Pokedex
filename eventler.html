@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shanabot | Etkinlik Merkezi</title>
+    <style>
+        @font-face {
+            font-family: 'Hemi Head';
+            src: url('hemi head bd it.ttf') format('truetype');
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        :root { 
+            --neon-cyan: #00f2ff; 
+            --neon-gold: #ffd700; 
+            --neon-pink: #e91e63; 
+            --neon-green: #00ff88; 
+            --neon-purple: #bc13fe;
+            --bg-dark: #05070a;
+            --main-font: 'Hemi Head', sans-serif; 
+        }
+
+        body { 
+            background-color: var(--bg-dark); color: #fff; font-family: var(--main-font); 
+            margin: 0; display: flex; flex-direction: column; align-items: center; 
+            min-height: 100vh; background-image: radial-gradient(circle at center, #0d121d 0%, #05070a 100%);
+        }
+
+        header {
+            text-align: center; padding: 40px 0; width: 100%;
+            border-bottom: 2px solid var(--neon-purple); background: rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        header h1 { font-size: 55px; margin: 0; text-shadow: 0 0 20px var(--neon-purple); letter-spacing: 3px; font-style: italic; }
+
+        .home-link {
+            position: absolute; top: 20px; right: 20px; text-decoration: none;
+            color: var(--neon-purple); border: 1px solid var(--neon-purple);
+            padding: 8px 15px; border-radius: 5px; font-size: 14px; transition: 0.3s;
+        }
+        .home-link:hover { background: var(--neon-purple); color: #fff; box-shadow: 0 0 15px var(--neon-purple); }
+
+        .content-container { width: 90%; max-width: 1100px; padding: 20px; margin-top: 30px; }
+
+        .terminal-box {
+            background: #0d1117; border-left: 5px solid var(--neon-purple);
+            padding: 25px; margin-bottom: 30px; border-radius: 4px;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .box-title { display: block; font-size: 28px; color: #fff; margin-bottom: 15px; letter-spacing: 2px; font-style: italic; text-shadow: 0 0 10px var(--neon-purple); }
+        .box-text { font-family: 'Segoe UI', sans-serif; color: #aaa; line-height: 1.8; font-size: 16px; }
+
+        .step-item { margin-bottom: 20px; padding-left: 15px; border-left: 2px solid #333; }
+        .highlight { color: var(--neon-cyan); font-weight: bold; }
+        .reward { color: var(--neon-gold); font-weight: bold; }
+        .danger { color: var(--neon-pink); font-weight: bold; }
+
+        .coming-soon {
+            text-align: center; padding: 40px; border: 2px dashed #333;
+            color: #555; font-size: 24px; letter-spacing: 5px; font-style: italic;
+            border-radius: 10px; margin-top: 50px;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .footer { padding: 40px; color: #333; letter-spacing: 4px; font-size: 11px; font-style: italic; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="faq.html" class="home-link">← SİSTEME DÖN</a>
+        <h1>ETKİNLİK MERKEZİ</h1>
+    </header>
+
+    <div class="content-container">
+        
+        <div class="terminal-box">
+            <span class="box-title">🍲 HARF ÇORBASI</span>
+            <div class="box-text">
+                <p>Bu sayfa üzerinden aktif yayın etkinlikleri hakkında detaylı bilgi alabilir ve katılım şartlarını öğrenebilirsiniz.</p>
+                
+                <div class="step-item">
+                    <span class="highlight">OYNANIŞ VE ÖRNEK:</span> <br>
+                    Bot, devasa kelime havuzundan seçtiği kelimeyi harflerini karıştırarak sohbete fırlatır. <br>
+                    <span class="val-text">Soru:</span> <span class="highlight">"G-A-L-Ü-T"</span> <br>
+                    <span class="val-text">Doğru Cevap:</span> <span class="highlight">"LÜGAT"</span> <br>
+                    Sohbete bu kelimeyi <span class="highlight">HATASIZ</span> şekilde ilk yazan kişi ödülü kazanır.
+                </div>
+
+                <div class="step-item">
+                    <span class="highlight">ÖDÜL HESAPLAMASI:</span> <br>
+                    Kazançlar kelimenin uzunluğu baz alınarak <span class="reward">HARF BAŞINA 400 COIN</span> olarak mühürlenmiştir. <br>
+                    <i>Örn: 5 harfli bir kelime bildiğinizde anında <span class="reward">2.000 Coin</span>, 10 harfli bir kelime bildiğinizde <span class="reward">4.000 Coin</span> kazanırsınız.</i>
+                </div>
+
+                <div class="step-item">
+                    <span class="danger">⚠️ İMLA VE YAZIMIN ÖNEMİ:</span> <br>
+                    Sohbete yazılan cevaplarda <span class="danger">İMLA HATASI</span> yapılması durumunda sistem cevabı kabul etmez. <br>
+                    Kelimeyi eksik yazmak, harf hatası yapmak veya sonuna ek getirmek elenmenize sebep olur. Büyük/Küçük harf duyarlılığı yoktur ancak yazımın doğruluğu mecburidir.
+                </div>
+            </div>
+        </div>
+
+        <div class="coming-soon">
+            🚀 YENİ ETKİNLİKLER YAKINDA SİSTEME DAHİL EDİLECEKTİR...
+        </div>
+
+    </div>
+
+    <div class="footer">SHANABOT EVENT MODULE // v1.0.2 // STABLE CONNECTION</div>
+
+</body>
+</html>
