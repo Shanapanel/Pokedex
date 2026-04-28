@@ -1,0 +1,1 @@
+﻿var leaderData = {"updateTime":"28.04.2026 12:27:08","topUsers":[{"userName":"Shanapanel","soupWins":3,"emojiWins":5,"gold":201423543,"totalWins":8}]};

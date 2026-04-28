@@ -58,6 +58,7 @@
         .highlight { color: var(--neon-cyan); font-weight: bold; }
         .reward { color: var(--neon-gold); font-weight: bold; }
         .danger { color: var(--neon-pink); font-weight: bold; }
+        .val-text { color: var(--neon-cyan); font-weight: normal; }
 
         .coming-soon {
             text-align: center; padding: 40px; border: 2px dashed #333;
@@ -79,9 +80,9 @@
     <div class="content-container">
         
         <div class="terminal-box">
-            <span class="box-title">🍲 HARF ÇORBASI</span>
+            <span class="box-title">🍲 HARF ÇORBASI (WORD SCRAMBLE)</span>
             <div class="box-text">
-                <p>Bu sayfa üzerinden aktif yayın etkinlikleri hakkında detaylı bilgi alabilir ve katılım şartlarını öğrenebilirsiniz.</p>
+                <p>Hızlı olanın kazandığı, klavye hızının ve dikkatin test edildiği temel etkinliktir.</p>
                 
                 <div class="step-item">
                     <span class="highlight">OYNANIŞ VE ÖRNEK:</span> <br>
@@ -94,13 +95,42 @@
                 <div class="step-item">
                     <span class="highlight">ÖDÜL HESAPLAMASI:</span> <br>
                     Kazançlar kelimenin uzunluğu baz alınarak <span class="reward">HARF BAŞINA 400 COIN</span> olarak mühürlenmiştir. <br>
-                    <i>Örn: 5 harfli bir kelime bildiğinizde anında <span class="reward">2.000 Coin</span>, 10 harfli bir kelime bildiğinizde <span class="reward">4.000 Coin</span> kazanırsınız.</i>
+                    <i>Örn: 5 harfli bir kelime bildiğinizde anında <span class="reward">2.000 Coin</span> kazanırsınız.</i>
                 </div>
 
                 <div class="step-item">
                     <span class="danger">⚠️ İMLA VE YAZIMIN ÖNEMİ:</span> <br>
-                    Sohbete yazılan cevaplarda <span class="danger">İMLA HATASI</span> yapılması durumunda sistem cevabı kabul etmez. <br>
-                    Kelimeyi eksik yazmak, harf hatası yapmak veya sonuna ek getirmek elenmenize sebep olur. Büyük/Küçük harf duyarlılığı yoktur ancak yazımın doğruluğu mecburidir.
+                    Sohbete yazılan cevaplarda <span class="danger">İMLA HATASI</span> yapılması durumunda sistem cevabı kabul etmez. Kelimeyi eksik yazmak, harf hatası yapmak veya sonuna ek getirmek elenmenize sebep olur.
+                </div>
+            </div>
+        </div>
+
+        <div class="terminal-box">
+            <span class="box-title">🎬 EMOJİ TAHMİN (PICTIONARY)</span>
+            <div class="box-text">
+                <p>Görsel zekanın ve genel kültürün ön planda olduğu, 1000+ soruluk dev bir etkinliktir.</p>
+                
+                <div class="step-item">
+                    <span class="highlight">OYNANIŞ VE KATEGORİLER:</span> <br>
+                    Bot; [KARAKTER], [FİLM], [DİZİ], [ANİME], [OYUN] veya [ATASÖZÜ] kategorisinden emojiler fırlatır. <br>
+                    Tahmini kolaylaştırmak için mesajın başında kategori bilgisi mutlaka belirtilir.
+                </div>
+
+                <div class="step-item">
+                    <span class="highlight">ÖRNEKLER:</span> <br>
+                    <span class="val-text">[KARAKTER]:</span> 🪓-🧔-⚔️ (Cevap: KRATOS) <br>
+                    <span class="val-text">[ANİME]:</span> 📓-🍎-💀 (Cevap: DEATH NOTE) <br>
+                    <span class="val-text">[ATASÖZÜ]:</span> 🍇-🍇-👁️ (Cevap: ÜZÜM ÜZÜME BAKA BAKA KARARIR)
+                </div>
+
+                <div class="step-item">
+                    <span class="highlight">ÖDÜL SİSTEMİ:</span> <br>
+                    Doğru cevabı sohbete ilk gönderen kişi anında <span class="reward">2.500 COIN</span> kazanır.
+                </div>
+
+                <div class="step-item">
+                    <span class="danger">⚠️ KURALLAR:</span> <br>
+                    Cevaplar tam ve eksiksiz olmalıdır. Atasözlerinde sıralama hayati önem taşır. Büyük/Küçük harf duyarlılığı yoktur ancak yazımın doğruluğu mecburidir.
                 </div>
             </div>
         </div>
@@ -111,7 +141,7 @@
 
     </div>
 
-    <div class="footer">SHANABOT EVENT MODULE // v1.0.2 // STABLE CONNECTION</div>
+    <div class="footer">SHANABOT EVENT MODULE // v2.0.1 // STABLE CONNECTION</div>
 
 </body>
 </html>

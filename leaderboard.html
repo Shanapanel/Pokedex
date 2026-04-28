@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shanabot | Onur Kürsüsü</title>
+    <style>
+        @font-face {
+            font-family: 'Hemi Head';
+            src: url('hemi head bd it.ttf') format('truetype');
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        :root { 
+            --neon-cyan: #00f2ff; 
+            --neon-gold: #ffd700; 
+            --neon-purple: #bc13fe;
+            --bg-dark: #05070a;
+            --main-font: 'Hemi Head', sans-serif; 
+        }
+
+        body { 
+            background-color: var(--bg-dark); color: #fff; font-family: var(--main-font); 
+            margin: 0; display: flex; flex-direction: column; align-items: center; 
+            min-height: 100vh; background-image: radial-gradient(circle at center, #0d121d 0%, #05070a 100%);
+        }
+
+        header {
+            text-align: center; padding: 40px 0; width: 100%;
+            border-bottom: 2px solid var(--neon-cyan); background: rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        header h1 { font-size: 55px; margin: 0; text-shadow: 0 0 20px var(--neon-cyan); letter-spacing: 3px; font-style: italic; }
+
+        .home-link {
+            position: absolute; top: 20px; right: 20px; text-decoration: none;
+            color: var(--neon-cyan); border: 1px solid var(--neon-cyan);
+            padding: 8px 15px; border-radius: 5px; font-size: 14px; transition: 0.3s;
+        }
+        .home-link:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 15px var(--neon-cyan); }
+
+        .content-container { width: 95%; max-width: 1200px; padding: 20px; margin-top: 30px; margin-bottom: 50px; }
+
+        .terminal-box {
+            background: #0d1117; border-left: 5px solid var(--neon-cyan);
+            padding: 25px; border-radius: 4px; animation: fadeIn 0.6s ease forwards;
+        }
+
+        .box-title { display: block; font-size: 28px; color: #fff; margin-bottom: 15px; letter-spacing: 2px; font-style: italic; text-shadow: 0 0 10px var(--neon-cyan); }
+        .box-text { font-family: 'Segoe UI', sans-serif; color: #aaa; margin-bottom: 25px; }
+
+        .leaderboard-table {
+            width: 100%; border-collapse: collapse; background: rgba(255,255,255,0.02);
+            border-radius: 8px; overflow: hidden;
+        }
+        .leaderboard-table th {
+            background: rgba(0, 242, 255, 0.1); color: var(--neon-cyan);
+            padding: 18px; text-align: left; font-size: 14px; border-bottom: 1px solid rgba(0, 242, 255, 0.3);
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .leaderboard-table td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); font-family: 'Segoe UI', sans-serif; }
+        .leaderboard-table tr:hover { background: rgba(255,255,255,0.03); }
+        
+        .rank-1 { color: var(--neon-gold); font-weight: bold; font-size: 18px; }
+        .rank-2 { color: #C0C0C0; font-weight: bold; }
+        .rank-3 { color: #CD7F32; font-weight: bold; }
+        .user-name { color: var(--neon-cyan); font-weight: bold; }
+        .stat-val { color: #fff; text-align: center; font-weight: bold; }
+        .total-gold { color: var(--neon-gold); font-weight: bold; text-align: right; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .footer { padding: 40px; color: #333; letter-spacing: 4px; font-size: 11px; font-style: italic; text-align: center; }
+        #sync-time { color: var(--neon-cyan); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="home-link">← MERKEZE DÖN</a>
+        <h1>ONUR KÜRSÜSÜ</h1>
+    </header>
+
+    <div class="content-container">
+        <div class="terminal-box">
+            <span class="box-title">🏆 EVENT KRALLARI (TOP 25)</span>
+            <p class="box-text">Harf Çorbası ve Emoji Tahmin etkinliklerinde en yüksek skoru yapan elit kullanıcılar.</p>
+            
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th style="width: 80px;">SIRA</th>
+                        <th>KULLANICI</th>
+                        <th style="text-align:center;">HARF ÇORBASI (BİLİNEN)</th>
+                        <th style="text-align:center;">EMOJİ TAHMİN (BİLİNEN)</th>
+                        <th style="text-align:right;">TOPLAM KAZANÇ</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="footer">SHANABOT RANKING SYSTEM // LAST SYNC: <span id="sync-time">BAĞLANILIYOR...</span></div>
+
+    <script src="leader_data.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const tbody = document.getElementById('leaderboard-body');
+            const syncTime = document.getElementById('sync-time');
+
+            // 1. Veri kontrolü
+            if (typeof leaderData !== 'undefined') {
+                // Son güncelleme zamanını bas
+                syncTime.innerText = leaderData.updateTime;
+
+                // 2. Tabloyu temizle ve doldur
+                tbody.innerHTML = ''; 
+
+                leaderData.topUsers.forEach((user, index) => {
+                    const rank = index + 1;
+                    let rankClass = '';
+                    let medal = '';
+
+                    // İlk 3 için özel stil ve madalya
+                    if (rank === 1) { rankClass = 'rank-1'; medal = ' 🥇'; }
+                    else if (rank === 2) { rankClass = 'rank-2'; medal = ' 🥈'; }
+                    else if (rank === 3) { rankClass = 'rank-3'; medal = ' 🥉'; }
+
+                    const row = `
+                        <tr>
+                            <td class="${rankClass}">#${rank}${medal}</td>
+                            <td class="user-name">${user.userName}</td>
+                            <td class="stat-val">${user.soupWins}</td>
+                            <td class="stat-val">${user.emojiWins}</td>
+                            <td class="total-gold">${user.gold.toLocaleString('tr-TR')}</td>
+                        </tr>
+                    `;
+                    tbody.innerHTML += row;
+                });
+            } else {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:50px;">VERİ DOSYASI (leader_data.js) BULUNAMADI!</td></tr>';
+            }
+        });
+    </script>
+</body>
+</html>

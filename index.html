@@ -18,6 +18,7 @@
             --neon-gold: #ffd700; 
             --neon-purple: #bc13fe;
             --neon-green: #00ff88;
+            --neon-white: #ffffff; /* Liderlik için yeni renk */
             --bg-dark: #05070a;
             --main-font: 'Hemi Head', sans-serif; 
         }
@@ -56,11 +57,11 @@
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
-            max-width: 1400px;
+            max-width: 1600px; /* 6 Kart için alan genişletildi */
         }
 
         .nav-card {
-            width: 240px;
+            width: 230px; /* 6 kart yan yana sığsın diye hafif daraltıldı */
             height: 350px;
             background: rgba(255, 255, 255, 0.02);
             border: 2px solid rgba(255, 255, 255, 0.05);
@@ -89,7 +90,11 @@
         .card-basarim:hover { border-color: var(--neon-pink); box-shadow: 0 0 40px rgba(233, 30, 99, 0.2); }
         .card-basarim .title { color: var(--neon-pink); text-shadow: 0 0 10px rgba(233, 30, 99, 0.5); }
 
-        /* Etkinlikler Kartı - Neon Green */
+        /* Liderlik Kartı Stili */
+        .card-leader { border-color: rgba(255, 255, 255, 0.1); }
+        .card-leader:hover { border-color: var(--neon-white); box-shadow: 0 0 40px rgba(255, 255, 255, 0.2); }
+        .card-leader .title { color: var(--neon-white); text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+
         .card-event { border-color: rgba(0, 255, 136, 0.2); }
         .card-event:hover { border-color: var(--neon-green); box-shadow: 0 0 40px rgba(0, 255, 136, 0.2); }
         .card-event .title { color: var(--neon-green); text-shadow: 0 0 10px rgba(0, 255, 136, 0.5); }
@@ -165,6 +170,12 @@
                 <div class="icon">🏆</div>
                 <div class="title">BAŞARIMLAR</div>
                 <div class="desc">Kullanıcı rütbeleri, kariyer kayıtları ve kilitli madalyalar.</div>
+            </a>
+
+            <a href="https://shanapanel.github.io/Shanabot/leaderboard.html" target="_blank" class="nav-card card-leader">
+                <div class="icon">👑</div>
+                <div class="title">LİDERLİK</div>
+                <div class="desc">Etkinlik şampiyonları, TOP 25 listesi ve Onur Kürsüsü.</div>
             </a>
 
             <a href="https://shanapanel.github.io/Shanabot/eventler.html" target="_blank" class="nav-card card-event">
