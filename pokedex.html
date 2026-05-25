@@ -5,14 +5,20 @@
     <title>Shanapanel Pokémon Eğitmen Paneli</title>
     <script id="dataScript" src="data.js"></script>
     <style>
-        /* Hemi Head fontunu burada tanımlıyoruz */
+        /* Hemi Head fontunu GitHub sunucusundan çekilecek şekilde tanımlıyoruz */
+        @font-face {
+            font-family: 'Hemi Head';
+            /* Buradaki isim, GitHub'a yüklediğin dosya adıyla BİREBİR aynı olmalı */
+            src: url('hemi head bd it.ttf') format('truetype');
+        }
+
         :root { 
             --neon-cyan: #00f2ff; 
             --neon-gold: #ffd700; 
             --neon-green: #00ff88; 
             --bg-dark: #06090f; 
             --card-bg: #11151c; 
-            /* Font ismini buraya yazdım, PC'ndeki isimle birebir aynı olmalı */
+            /* Font ismini yukarıda tanımladığımız 'Hemi Head' olarak atadık */
             --main-font: 'Hemi Head', sans-serif; 
         }
 
