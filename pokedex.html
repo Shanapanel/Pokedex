@@ -2,23 +2,17 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Shanabot Pokémon Eğitmen Paneli</title>
+    <title>Shanapanel Pokémon Eğitmen Paneli</title>
     <script id="dataScript" src="data.js"></script>
     <style>
-        /* 1. Fontu GitHub'dan Çekiyoruz */
-        @font-face {
-            font-family: 'Hemi Head';
-            /* Buradaki isim, GitHub'a yüklediğin dosya adıyla BİREBİR aynı olmalı */
-            src: url('hemi head bd it.ttf');
-        }
-
+        /* Hemi Head fontunu burada tanımlıyoruz */
         :root { 
             --neon-cyan: #00f2ff; 
             --neon-gold: #ffd700; 
             --neon-green: #00ff88; 
             --bg-dark: #06090f; 
             --card-bg: #11151c; 
-            /* Font artık yukarıda tanımladığımız 'Hemi Head' oldu */
+            /* Font ismini buraya yazdım, PC'ndeki isimle birebir aynı olmalı */
             --main-font: 'Hemi Head', sans-serif; 
         }
 
@@ -95,7 +89,7 @@
 
     <script>
         let selectedTrainerIndex = -1;
-        const imgBase = "sugimori/"; 
+        const imgBase = "file:///D:/Twitch ve Youtube/Twitch/poke game/sugimori/";
 
         function refreshData() {
             const oldScript = document.getElementById('dataScript');
